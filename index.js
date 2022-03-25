@@ -5,7 +5,6 @@ require("console.table");
 
 init();
 
-// Display logo text, load main prompts
 function init() {
   const logoText = logo({ name: "Employee Manager" }).render();
 
@@ -60,8 +59,6 @@ async function loadMainPrompts() {
       ]
     }
   ]);
-
-  // Call the appropriate function depending on what the user chose
   switch (choice) {
     case "VIEW_EMPLOYEES":
       return viewEmployees();
@@ -98,7 +95,7 @@ async function viewEmployeesByDepartment() {
 
   const departmentChoices = departments.map(({ id, name }) => ({
     name: name,
-    value: id,
+    value: id
 
   }));
 
@@ -123,10 +120,8 @@ async function updateEmployeeRole() {
   const employees = await db.findAllEmployees();
 
   const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
-
     name: `${first_name} ${last_name}`,
-    value: id,
-
+    value: id
   }));
 
   const { employeeId } = await prompt([
@@ -257,12 +252,7 @@ async function addEmployee() {
 
   const managerChoices = employees.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
-    value: id,
-    // CREATE TWO PROPERTIES name AMD value FOR THIS OBJECT. THE PROPERTY name SHOULD CONTAIN THE CONCATENATION OF THE FIRST HAME AND THE LAST NAME.
-    // THE PROPERTY value SHOULD CONTAIN id.
-    // THIS OBJECT FOR EACH MANAGER WILL RETURN TO MAP() TO CONSTRUCT AN ARRAY TO BE RETURNED AND BE STORED TO managerChoices.
-    // TODO: YOUR CODE HERE
-
+    value: id
   }));
   managerChoices.unshift({ name: "None", value: null });
 
